@@ -14,7 +14,7 @@ else
   let g:MuttSigLines=g:MuttSigLines+1
 endif
 
-nnoremap <buffer> <leader>S :call MuttStripSig()<cr>
+nnoremap <buffer> <localleader>S :call MuttStripSig()<cr>
 function! MuttStripSig()
     normal mx
     if exists('g:MuttSigStripString')
