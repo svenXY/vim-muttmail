@@ -14,6 +14,7 @@ else
   let g:MuttSigLines=g:MuttSigLines+1
 endif
 
+
 nnoremap <buffer> <localleader>S :call MuttStripSig()<cr>
 function! MuttStripSig()
     normal mx
@@ -30,6 +31,11 @@ endfu
 " Function to remove the signature of the last quoted mail
 function! RemoveQuotedSig()
     silent g/^> --\s\=$/,/^$/-1d
+endfu
+
+" Function to remove the signature
+function! RemoveMySig()
+    silent g/^--\s\=$/,$d
 endfu
 
 if ! exists('spelllang')
@@ -50,3 +56,16 @@ if ! exists('g:MuttNoSignatureRemoval')
     call RemoveQuotedSig()
 endif
 
+if ! exists('g:MuttSigFile')
+  let g:MuttSigFile='~/.signature'
+endif
+function! InsertSignature(...)
+    normal! mx
+    call RemoveMySig()
+    normal! Go-- 
+    execute "read " . g:MuttSigFile
+    normal! 'x
+    if a:0 == 1
+        call MuttStripSig()
+    endif
+endfunction
