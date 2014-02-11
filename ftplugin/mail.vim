@@ -14,6 +14,9 @@ else
   let g:MuttSigLines=g:MuttSigLines+1
 endif
 
+" Insert long or short signature
+nnoremap <buffer> <localleader>ss :call InsertSignature(1)<cr>
+nnoremap <buffer> <localleader>sl :call InsertSignature()<cr>
 
 nnoremap <buffer> <localleader>S :call MuttStripSig()<cr>
 function! MuttStripSig()
@@ -65,7 +68,15 @@ function! InsertSignature(...)
     normal! Go-- 
     execute "read " . g:MuttSigFile
     normal! 'x
-    if a:0 == 1
+    if a:1 == 1
         call MuttStripSig()
     endif
 endfunction
+
+function GetRecipient()
+    let toline = search("^To:")
+    let line = getline(toline)
+    let stuff = split(line)
+    return stuff[1]
+endfu
+
