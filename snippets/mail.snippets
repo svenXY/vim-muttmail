@@ -1,18 +1,21 @@
-snippet svh
-	Sven Hergenhahn
+snippet me
+	`g:snips_author`
 
-snippet @
-	Sven Hergenhahn <sven.hergenhahn@1und1.de>
+snippet n@ mailto address only
+	`g:snips_author` <`g:snips_email`>
+
+snippet @ mailto address wth name
+	`g:snips_email`
 
 snippet gr
 	Gruß,
-	Sven
+	`split(g:snips_author)[0]`
 
 snippet mfg
 	Mit freundlichen Grüßen,
-	Sven Hergenhahn
+	`g:snips_author`
 
 snippet h
-	Hallo `GetRecipient()`,
+	Hallo ${1:`GetRecipient()`},
 
-	${1:Text}
+	${2:Text}
