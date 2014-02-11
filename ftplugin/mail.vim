@@ -8,7 +8,7 @@ let b:loaded_MuttMail_plugin = 1
 " Function to strip one's own signature by either
 "   - a string (at the beginning of the first stripped line)
 "   - a number (for the lines (after "-- ") to keep
-if ! exists('g:MuttSigStripLines')
+if ! exists('g:MuttSigLines')
   let g:MuttSigLines=2
 else 
   let g:MuttSigLines=g:MuttSigLines+1
@@ -24,7 +24,7 @@ function! MuttStripSig()
     if exists('g:MuttSigStripString')
         execute "silent g/^" . g:MuttSigStripString . "/,$d"
         echom "Removed Signature tail after ^" . g:MuttSigStripString . "/,$d"
-    elseif exists('g:MuttSigStripLines')
+    elseif exists('g:MuttSigLines')
         execute "silent g/^-- $/+" . g:MuttSigLines . ",$d"
         echom "Removed Signature tail after " . g:MuttSigLines . " lines"
     endif
