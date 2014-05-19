@@ -47,11 +47,13 @@ endif
     
 
 set nonumber
-set background=light spell
+set background=dark spell
+"highlight! SpellBad term=underline cterm=underline ctermbg=10 gui=undercurl
 
-if exists(':QueryCommandComplete')
+"if exists(':QueryCommandComplete')
+  let g:qcc_query_command='abook --mutt-query'
   setlocal omnifunc=QueryCommandComplete
-endif
+"endif
 
 " Remove quoted signature from my mail
 " to disable let g:MuttNoSignatureRemoval=1 in ~/.vimrc
