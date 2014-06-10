@@ -1,0 +1,27 @@
+snippet me "Author full name"
+`!v g:snips_author`
+endsnippet
+
+snippet @ "mailto address only"
+`!v g:snips_email`
+endsnippet
+
+snippet @@ "mailto address wth name"
+`!v g:snips_author`  <`!v g:snips_email`>
+endsnippet
+
+snippet gr "Gruß"
+Gruß,
+`!v split(g:snips_author)[0]`
+endsnippet
+
+snippet mfg "MFG"
+Mit freundlichen Grüßen,
+`!v g:snips_author`
+endsnippet
+
+snippet h "Hallo rcpt"
+Hallo ${1:`!v GetRecipient()`},
+
+${0}
+endsnippet
