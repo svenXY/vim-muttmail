@@ -79,6 +79,10 @@ function GetRecipient()
     let toline = search("^To:")
     let line = getline(toline)
     let stuff = split(line)
-    return stuff[1]
+    if len(stuff) > 1
+        return stuff[1]
+    else
+        return 'RCPT'
+    endif
 endfu
 
