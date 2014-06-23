@@ -24,6 +24,10 @@ Section 2: Mappings                                         *MuttmailMappings*
 
 <localleader>S ..................... Strip the signature
 
+<localleader>sq..................... Remove the quoted signature
+
+<localleader>sr..................... Remove my signature
+
 ==============================================================================
 Section 3: Variables                                       *MuttmailVariables*
 
